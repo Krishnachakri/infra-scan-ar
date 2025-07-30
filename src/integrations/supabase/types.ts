@@ -14,7 +14,217 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      citizen_reports: {
+        Row: {
+          asset_id: string
+          created_at: string
+          description: string
+          id: string
+          image_url: string | null
+          location_lat: number | null
+          location_lng: number | null
+          priority: string | null
+          report_type: string
+          status: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          asset_id: string
+          created_at?: string
+          description: string
+          id?: string
+          image_url?: string | null
+          location_lat?: number | null
+          location_lng?: number | null
+          priority?: string | null
+          report_type: string
+          status?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          asset_id?: string
+          created_at?: string
+          description?: string
+          id?: string
+          image_url?: string | null
+          location_lat?: number | null
+          location_lng?: number | null
+          priority?: string | null
+          report_type?: string
+          status?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "citizen_reports_asset_id_fkey"
+            columns: ["asset_id"]
+            isOneToOne: false
+            referencedRelation: "infrastructure_assets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      infrastructure_assets: {
+        Row: {
+          address: string | null
+          construction_cost: number | null
+          construction_date: string | null
+          contractor_name: string | null
+          created_at: string
+          description: string | null
+          environmental_impact: string | null
+          funding_source: string | null
+          id: string
+          image_url: string | null
+          last_maintenance_date: string | null
+          location_lat: number
+          location_lng: number
+          maintenance_cost: number | null
+          name: string
+          project_id: string | null
+          social_impact: string | null
+          status: string | null
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          construction_cost?: number | null
+          construction_date?: string | null
+          contractor_name?: string | null
+          created_at?: string
+          description?: string | null
+          environmental_impact?: string | null
+          funding_source?: string | null
+          id?: string
+          image_url?: string | null
+          last_maintenance_date?: string | null
+          location_lat: number
+          location_lng: number
+          maintenance_cost?: number | null
+          name: string
+          project_id?: string | null
+          social_impact?: string | null
+          status?: string | null
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          construction_cost?: number | null
+          construction_date?: string | null
+          contractor_name?: string | null
+          created_at?: string
+          description?: string | null
+          environmental_impact?: string | null
+          funding_source?: string | null
+          id?: string
+          image_url?: string | null
+          last_maintenance_date?: string | null
+          location_lat?: number
+          location_lng?: number
+          maintenance_cost?: number | null
+          name?: string
+          project_id?: string | null
+          social_impact?: string | null
+          status?: string | null
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      maintenance_history: {
+        Row: {
+          asset_id: string
+          completion_date: string | null
+          contractor_name: string | null
+          cost: number | null
+          created_at: string
+          description: string
+          id: string
+          maintenance_type: string
+          notes: string | null
+          start_date: string
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          asset_id: string
+          completion_date?: string | null
+          contractor_name?: string | null
+          cost?: number | null
+          created_at?: string
+          description: string
+          id?: string
+          maintenance_type: string
+          notes?: string | null
+          start_date: string
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          asset_id?: string
+          completion_date?: string | null
+          contractor_name?: string | null
+          cost?: number | null
+          created_at?: string
+          description?: string
+          id?: string
+          maintenance_type?: string
+          notes?: string | null
+          start_date?: string
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "maintenance_history_asset_id_fkey"
+            columns: ["asset_id"]
+            isOneToOne: false
+            referencedRelation: "infrastructure_assets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          role: string | null
+          updated_at: string
+          user_id: string
+          username: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          role?: string | null
+          updated_at?: string
+          user_id: string
+          username?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          role?: string | null
+          updated_at?: string
+          user_id?: string
+          username?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
